@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: <your-image-repo>
+  tag: <your-image-tag>
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+env: []
+resources: {}

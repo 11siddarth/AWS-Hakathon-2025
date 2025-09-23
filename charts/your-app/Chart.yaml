@@ -1,0 +1,5 @@
+apiVersion: v2
+name: your-app
+version: 0.1.0
+description: A generic Helm chart for your app
+type: application
