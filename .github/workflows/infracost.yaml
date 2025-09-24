@@ -1,11 +1,13 @@
 name: Infracost Cost Estimation
  
 on:
-  pull_request:
+  push:
     paths:
       - 'vpc/**'
       - 'eks/**'
       - '.github/workflows/infracost.yml'
+    branches: [main]
+  workflow_dispatch:
  
 jobs:
   infracost:
