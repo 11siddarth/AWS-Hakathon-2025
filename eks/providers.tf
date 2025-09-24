@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-west-2"
   default_tags {
     tags = {
       "Environment" = var.environment
@@ -8,7 +8,9 @@ provider "aws" {
   }
 }
 terraform {
-  backend "s3" {}
+  backend "s3" {
+    region = "us-west-2"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
