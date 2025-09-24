@@ -5,7 +5,7 @@ on:
     paths:
       - 'vpc/**'
       - 'eks/**'
-      - '.github/workflows/infra.yml'
+      - '.github/workflows/deploy-infra.yml'
     branches: [main]
   workflow_dispatch:
  

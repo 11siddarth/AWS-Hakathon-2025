@@ -24,4 +24,7 @@ enable_irsa = true
   vpc_id                   = data.aws_vpc.selected.id
   subnet_ids               = data.aws_subnets.private_subnets.ids
   control_plane_subnet_ids = data.aws_subnets.private_subnets.ids
+  tags = {
+    hackathon = "team08"
+  }
 }
