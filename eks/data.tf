@@ -7,7 +7,7 @@ data "aws_eks_cluster_auth" "cluster" {
 data "aws_vpc" "selected" {
   filter {
     name   = "tag:Name"
-    values = ["${var.project}-${var.environment}"]
+    values = ["vpc-team08-${var.project}-${var.environment}"]
   }
 }
 
