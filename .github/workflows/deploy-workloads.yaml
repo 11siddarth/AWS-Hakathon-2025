@@ -29,7 +29,7 @@ jobs:
  
     - name: Update kubeconfig
       run: |
-        aws eks update-kubeconfig --name hackathon-eks --region us-west-2
+        aws eks update-kubeconfig --name eks-dev --region us-west-2
  
  
  
