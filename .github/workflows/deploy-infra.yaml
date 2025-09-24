@@ -32,7 +32,8 @@ jobs:
     - name: Terraform Init VPC
       run: |
         cd vpc
-        terraform init
+        terraform init -backend-config="dev/backend.tfvars"
+        
     - name: Terraform Apply VPC
       run: |
         cd vpc
@@ -41,7 +42,7 @@ jobs:
     - name: Terraform Init EKS
       run: |
         cd ../eks
-        terraform init
+        terraform init -backend-config="dev/backend.tfvars"
  
     - name: Terraform Apply EKS
       run: |
