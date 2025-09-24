@@ -1,3 +1,3 @@
-region = "us-east-2"
-bucket = "hackathonteam08"
-key    = "eks.tfstate"
+region = "us-west-2"
+bucket = "hackathonteameight"
+key    = "dev/eks.tfstate"
