@@ -42,10 +42,10 @@ jobs:
  
     - name: Terraform Init EKS
       run: |
-        cd ../eks
+        cd eks
         terraform init -backend-config="dev/backend.tfvars"
  
     - name: Terraform Apply EKS
       run: |
-        cd ../eks
+        cd eks
         terraform apply -auto-approve
