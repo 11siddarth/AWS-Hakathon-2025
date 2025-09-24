@@ -1,0 +1,49 @@
+name: Infrastructure Provisioning
+ 
+on:
+  push:
+    paths:
+      - 'vpc/**'
+      - 'eks/**'
+      - '.github/workflows/infra.yml'
+    branches: [main]
+  workflow_dispatch:
+ 
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_cluster_name: cluster_name
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+ 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+ 
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+ 
+ 
+    - name: Terraform Init VPC
+      run: |
+        cd vpc
+        terraform init
+    - name: Terraform Apply VPC
+      run: |
+        cd vpc
+        terraform apply -auto-approve
+ 
+    - name: Terraform Init EKS
+      run: |
+        cd ../eks
+        terraform init
+ 
+    - name: Terraform Apply EKS
+      run: |
+        cd ../eks
+        terraform apply -auto-approve
