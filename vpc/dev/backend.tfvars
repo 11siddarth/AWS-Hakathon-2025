@@ -1,3 +1,3 @@
-region = "us-east-2"
-bucket = "hackathonteam08"
+region = "us-west-2"
+bucket = "hackathonteameight"
 key    = "vpc.tfstate"
