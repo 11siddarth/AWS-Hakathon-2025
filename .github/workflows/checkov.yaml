@@ -1,0 +1,25 @@
+name: Checkov IaC Review
+ 
+on:
+  push:
+    paths:
+      - 'vpc/**'
+      - 'eks/**'
+      - 'workloads/**'
+      - '.github/workflows/checkov.yml'
+    branches: [main]
+  workflow_dispatch:
+  
+ 
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+ 
+    - name: Run Checkov
+      uses: bridgecrewio/checkov-action@v12
+      with:
+        directory: .
+        framework: terraform,kubernetes
