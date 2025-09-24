@@ -1,0 +1,41 @@
+name: Workloads Deployment
+ 
+on:
+  push:
+    paths:
+      - 'workloads/**'
+      - '.github/workflows/deploy-workloads.yml'
+    branches: [main]
+  workflow_dispatch:
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+ 
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+ 
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+ 
+    - name: Update kubeconfig
+      run: |
+        aws eks update-kubeconfig --name hackathon-eks --region us-west-2
+ 
+ 
+ 
+    - name: Deploy Namespace
+      run: kubectl apply -f workloads/namespace.yaml
+    - name: Deploy Workload
+      run: kubectl apply -f workloads/deployment.yaml
+    - name: Deploy Service
+      run: kubectl apply -f workloads/service.yaml
