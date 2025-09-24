@@ -1,6 +1,6 @@
 # module "vpc" {
 #   source = "terraform-aws-modules/vpc/aws"
-#   name = "vpc-${var.project}-${var.environment}"
+#   name = "vpc-team08-${var.project}-${var.environment}"
 #   cidr = "12.0.0.0/16"
 
 #   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
